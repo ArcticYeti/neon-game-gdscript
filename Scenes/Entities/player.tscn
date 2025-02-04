@@ -1,157 +1,31 @@
-[gd_scene load_steps=18 format=3 uid="uid://bq7xrh8wbpfwc"]
+[gd_scene load_steps=9 format=3 uid="uid://dwxium3jqkasw"]
 
-[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_bo2js"]
-[ext_resource type="PackedScene" uid="uid://bcva1sly8stv2" path="res://scenes/components/movement.tscn" id="2_5xkq3"]
-[ext_resource type="PackedScene" uid="uid://dey64af8d1oo5" path="res://scenes/entities/player/player_weapon_handler.tscn" id="2_55ocx"]
-[ext_resource type="PackedScene" uid="uid://bggpto5t0tn50" path="res://scenes/entities/player/player_dash.tscn" id="2_amrv3"]
-[ext_resource type="PackedScene" uid="uid://cq7rridrbgkmr" path="res://scenes/components/health.tscn" id="2_eq0pi"]
-[ext_resource type="PackedScene" uid="uid://ph83y4evfw7x" path="res://scenes/components/hurtbox.tscn" id="2_lnqrl"]
-[ext_resource type="PackedScene" uid="uid://caygg648436r0" path="res://scenes/components/neon_sprite.tscn" id="2_x0wmn"]
-[ext_resource type="PackedScene" uid="uid://dyx3x1k7i5is1" path="res://scenes/entities/player/weapons/neon_blaster.tscn" id="3_j7h0h"]
-[ext_resource type="PackedScene" uid="uid://bqnflnsed384h" path="res://scenes/entities/player/player_movement_strategy.tscn" id="3_wjr0c"]
-[ext_resource type="Texture2D" uid="uid://d0pvohn4er6l0" path="res://textures/entities/player/cube_1.png" id="3_yjeme"]
-[ext_resource type="Texture2D" uid="uid://b3gxsnr1vswt3" path="res://textures/entities/player/cube_1_blur_5.png" id="4_mgueh"]
-[ext_resource type="PackedScene" uid="uid://dvroh4mkrqv2w" path="res://scenes/components/neon_trail.tscn" id="5_0du6t"]
+[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_ignyv"]
+[ext_resource type="PackedScene" uid="uid://c5vtxpfuldox3" path="res://scenes/components/neon_sprite.tscn" id="2_1fjgx"]
+[ext_resource type="Resource" uid="uid://d0xei6b44p3x2" path="res://resources/entity_stats/player_stats.tres" id="2_fl5mu"]
+[ext_resource type="Texture2D" uid="uid://dmwg5565effbo" path="res://textures/cube_1.png" id="2_fm5l6"]
+[ext_resource type="Texture2D" uid="uid://bme4tbmwuilom" path="res://textures/cube_1__Blur_5.0.png" id="3_18m1y"]
+[ext_resource type="PackedScene" uid="uid://c03uw7rb4q5e7" path="res://scenes/components/entity_registrar.tscn" id="3_c8qwq"]
+[ext_resource type="PackedScene" uid="uid://br1lhu5783pug" path="res://scenes/components/entity_movement.tscn" id="4_q1kwh"]
+[ext_resource type="Resource" uid="uid://gge3obhkpc0p" path="res://resources/entity_movement_strategies/player_movement_strategy.tres" id="7_ds4qm"]
 
-[sub_resource type="Curve" id="Curve_0ijkq"]
-_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), 0.101424, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_ayhf0"]
-min_value = 1.0
-max_value = 2.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.19688), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_6nj1l"]
-colors = PackedColorArray(0.423529, 1, 0.913725, 1, 0.576471, 0.552941, 0.913725, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_056wt"]
-gradient = SubResource("Gradient_6nj1l")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_a5o4m"]
-radius = 26.1725
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_player_weapon_handler", "_player_dash", "_neon_sprite", "_neon_trail", "_movement", "_movement_strategy") groups=["player"]]
-collision_mask = 0
-script = ExtResource("1_bo2js")
-_player_weapon_handler = NodePath("PlayerWeaponHandler")
-_player_dash = NodePath("PlayerDash")
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_neon_sprite") groups=["player"]]
+script = ExtResource("1_ignyv")
 _neon_sprite = NodePath("NeonSprite")
-_neon_trail = NodePath("NeonTrail")
-_movement = NodePath("Movement")
-_movement_strategy = NodePath("Movement/PlayerMovementStrategy")
-metadata/_access_modifiers = {
-"_c_movement_controller": 2,
-"_c_neon_sprite": 2,
-"_dash": 2,
-"_movement": 2,
-"_movement_strategy": 2,
-"_neon_sprite": 2,
-"_neon_trail": 2,
-"_player_dash": 2,
-"_player_weapon_handler": 2,
-"auto_translate_mode": 2,
-"collision_layer": 0,
-"collision_mask": 2,
-"collision_priority": 2,
-"disable_mode": 2,
-"editor_description": 2,
-"floor_block_on_wall": 2,
-"floor_constant_speed": 2,
-"floor_max_angle": 2,
-"floor_snap_length": 2,
-"floor_stop_on_slope": 2,
-"input_pickable": 2,
-"light_mask": 2,
-"material": 2,
-"modulate": 2,
-"motion_mode": 2,
-"movement": 2,
-"neon_sprite": 2,
-"physics_interpolation_mode": 2,
-"platform_floor_layers": 2,
-"platform_on_leave": 2,
-"platform_wall_layers": 2,
-"process_mode": 2,
-"process_physics_priority": 2,
-"process_priority": 2,
-"process_thread_group": 2,
-"safe_margin": 2,
-"script": 2,
-"self_modulate": 2,
-"show_behind_parent": 2,
-"skew": 2,
-"slide_on_ceiling": 2,
-"texture_filter": 2,
-"texture_repeat": 2,
-"top_level": 2,
-"up_direction": 2,
-"use_parent_material": 2,
-"visibility_layer": 2,
-"visible": 2,
-"weapon_handler": 2,
-"y_sort_enabled": 2,
-"z_as_relative": 2,
-"z_index": 2
+stats = ExtResource("2_fl5mu")
+
+[node name="EntityRegistrar (Registered)" parent="." instance=ExtResource("3_c8qwq")]
+btn_register_toggle = {
+"click": Callable(),
+"color": "danger",
+"icon": "Remove",
+"text": "Unregister Entity"
 }
 
-[node name="PlayerWeaponHandler" parent="." node_paths=PackedStringArray("_weapon_0", "_parent_entity") instance=ExtResource("2_55ocx")]
-_weapon_0 = NodePath("NeonBlaster")
-_parent_entity = NodePath("..")
+[node name="NeonSprite" parent="." instance=ExtResource("2_1fjgx")]
+base_texture = ExtResource("2_fm5l6")
+glow_texture = ExtResource("3_18m1y")
+color = Color(0, 1, 1, 1)
 
-[node name="NeonBlaster" parent="PlayerWeaponHandler" instance=ExtResource("3_j7h0h")]
-metadata/_access_modifiers = {
-"_basic_attack_fire_rate": 2,
-"_special_fire_rate": 2,
-"basic_attack_input_mode": 2,
-"basic_attack_projectile": 2,
-"basic_attack_projectile_scene": 2,
-"special_input_mode": 2,
-"special_projectile": 2,
-"special_projectile_scene": 2
-}
-
-[node name="Movement" parent="." instance=ExtResource("2_5xkq3")]
-
-[node name="PlayerMovementStrategy" parent="Movement" instance=ExtResource("3_wjr0c")]
-_movement_speed = 350
-
-[node name="PlayerDash" parent="." node_paths=PackedStringArray("_movement", "_hurtbox", "_neon_trail") instance=ExtResource("2_amrv3")]
-_dash_distance = 150
-_dash_speed = 45
-_movement = NodePath("../Movement")
-_hurtbox = NodePath("../Hurtbox")
-_neon_trail = NodePath("../NeonTrail")
-
-[node name="Health" parent="." node_paths=PackedStringArray("_neon_sprite", "_hurtbox") instance=ExtResource("2_eq0pi")]
-_recovery_time_sec = 1.25
-_health = 4
-_max_health = 4
-_neon_sprite = NodePath("../NeonSprite")
-_hurtbox = NodePath("../Hurtbox")
-
-[node name="NeonSprite" parent="." instance=ExtResource("2_x0wmn")]
-_base_texture = ExtResource("3_yjeme")
-_glow_texture = ExtResource("4_mgueh")
-_color = Color(0.422153, 1, 0.912743, 1)
-
-[node name="NeonTrail" parent="." instance=ExtResource("5_0du6t")]
-enabled = false
-_rgb_overdrive_factor = 2.0
-spawn_interval_sec = 0.01
-_decay_time = 0.1
-_base_alpha = 0.35
-_texture = ExtResource("3_yjeme")
-_glow_texture = ExtResource("4_mgueh")
-_alpha_curve = SubResource("Curve_0ijkq")
-_scale = SubResource("Curve_ayhf0")
-_gradient = SubResource("GradientTexture1D_056wt")
-metadata/_access_modifiers = {
-"_neon_sprite_lite_scene": 2
-}
-
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("_health", "_movement") instance=ExtResource("2_lnqrl")]
-shape = SubResource("CircleShape2D_a5o4m")
-_health = NodePath("../Health")
-_movement = NodePath("../Movement")
+[node name="EntityMovement" parent="." instance=ExtResource("4_q1kwh")]
+strategy = ExtResource("7_ds4qm")

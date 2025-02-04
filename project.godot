@@ -8,57 +8,53 @@
 
 config_version=5
 
+[addons]
+
+resources_spreadsheet_view/array_color_tint=100.0
+resources_spreadsheet_view/color_rows=true
+resources_spreadsheet_view/array_min_width=128.0
+resources_spreadsheet_view/resource_preview_size=32.0
+resources_spreadsheet_view/clip_headers=false
+resources_spreadsheet_view/dupe_arrays=true
+resources_spreadsheet_view/context_menu_on_leftclick=false
+resources_spreadsheet_view/fold_docks=true
+resources_spreadsheet_view/resource_cell_label_mode=1
+
 [application]
 
 config/name="NeonGame"
-run/main_scene="res://scenes/levels/dev_level.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://scenes/level_editor.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SignalBus="*res://scripts/autoload/signal_bus.gd"
-ProjectileHandler="*res://scripts/autoload/projectile_handler.gd"
-Lumen="*res://scripts/autoload/lumen.gd"
 Utils="*res://scripts/autoload/utils.gd"
+EntityMovementHandler="*res://scripts/autoload/entity_movement_handler.gd"
 
 [debug]
 
 gdscript/warnings/unused_parameter=0
-gdscript/warnings/unused_signal=0
-gdscript/warnings/shadowed_variable=0
-gdscript/warnings/untyped_declaration=2
-gdscript/warnings/unsafe_property_access=2
-gdscript/warnings/unsafe_method_access=1
-gdscript/warnings/unsafe_cast=1
-gdscript/warnings/unsafe_call_argument=1
+gdscript/warnings/untyped_declaration=1
 
 [display]
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
-window/size/resizable=false
 window/stretch/mode="viewport"
 
 [dotnet]
 
-project/assembly_name="NeonGame"
-
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
+project/assembly_name="NeonRevised"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/private-exports/plugin.cfg")
+enabled=PackedStringArray("res://addons/simple_tool_button/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
-"res://_TEMP_OLD_CODE/Scenes/Components/": "pink",
-"res://_TEMP_OLD_CODE/Scenes/Entities/": "orange",
-"res://_TEMP_OLD_CODE/Scenes/Weapons/": "blue",
+"res://resources/": "purple",
 "res://scenes/": "red",
 "res://scenes/components/": "red",
 "res://scenes/entities/": "red",
@@ -67,6 +63,10 @@ folder_colors={
 "res://textures/": "orange"
 }
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 up={
@@ -74,14 +74,14 @@ up={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
 ]
 }
-left={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
-]
-}
 down={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
+]
+}
+left={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
 ]
 }
 right={
@@ -89,30 +89,8 @@ right={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
 ]
 }
-basic_attack={
-"deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(60, 22),"global_position":Vector2(69, 64),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
-]
-}
-special={
-"deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(153, 15),"global_position":Vector2(162, 57),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
-]
-}
-dash={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
-]
-}
-
-[layer_names]
-
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Enemies"
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
-textures/default_filters/anisotropic_filtering_level=0
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.226707, 0.226707, 0.226707, 1)
 viewport/hdr_2d=true

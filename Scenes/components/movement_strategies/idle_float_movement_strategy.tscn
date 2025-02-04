@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvd30nhjyoc31"]
-
-[ext_resource type="Script" path="res://scripts/components/movement_strategies/idle_float_movement_strategy.gd" id="1_n7xbi"]
-
-[node name="IdleFloatMovementStrategy" type="Node"]
-script = ExtResource("1_n7xbi")

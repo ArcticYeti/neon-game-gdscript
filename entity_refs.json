@@ -1,0 +1,10 @@
+[
+	{
+		"id": "player",
+		"scene_path": "res://scenes/entities/player.tscn"
+	},
+	{
+		"id": "roto",
+		"scene_path": "res://scenes/entities/roto.tscn"
+	}
+]
